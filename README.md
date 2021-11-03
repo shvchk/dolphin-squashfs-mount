@@ -13,7 +13,7 @@ To do so in GitHub web interface, you can edit file right there, then click `Pro
 </details>
 
 ### Installation
-Place `.desktop` file in ~/.local/share/kservices5/ServiceMenus
+Place `.desktop` file in `~/.local/share/kservices5/ServiceMenus`
 
 ---
 
