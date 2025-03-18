@@ -11,11 +11,11 @@ Name=Mount SquashFS
 Name[nl]=SquashFS aankoppelen
 Name[ru]=Смонтировать SquashFS
 Icon=media-mount
-Exec=(mnt_file="$(basename "%f")" && mnt_dir="/tmp/${mnt_file}-$(echo -n "%f" | sha256sum | head -c 8)" && mkdir -p "$mnt_dir" && (squashfuse "%f" "$mnt_dir" && xdg-open "$mnt_dir") || kdialog --error "Cannot mount, you can try to mount it manually:\n\nsquashfuse \\""%f"\\" \\""$mnt_dir"\\"")
+Exec=(f=%f; mnt_file="$(basename "$f")" && mnt_dir="/tmp/${mnt_file}-$(echo -n "$f" | sha256sum | head -c 8)" && mkdir -p "$mnt_dir" && (squashfuse "$f" "$mnt_dir" && xdg-open "$mnt_dir") || kdialog --error "Cannot mount, you can try to mount it manually:\n\nsquashfuse \\"$f\\" \\""$mnt_dir"\\"")
 
 [Desktop Action unmount]
 Name=Unmount SquashFS
 Name[nl]=SquashFS afkoppelen
 Name[ru]=Размонтировать SquashFS
 Icon=media-eject
-Exec=(mnt_file="$(basename "%f")" && mnt_dir="/tmp/${mnt_file}-$(echo -n "%f" | sha256sum | head -c 8)" && (fusermount -u "$mnt_dir" && rm -r "$mnt_dir") || kdialog --error "Cannot unmount, you can try to unmount it manually:\n\nfusermount -u \\""$mnt_dir"\\"")
+Exec=(f=%f; mnt_file="$(basename "$f")" && mnt_dir="/tmp/${mnt_file}-$(echo -n "$f" | sha256sum | head -c 8)" && (fusermount -u "$mnt_dir" && rm -r "$mnt_dir") || kdialog --error "Cannot unmount, you can try to unmount it manually:\n\nfusermount -u \\""$mnt_dir"\\"")
